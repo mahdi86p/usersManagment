@@ -6,8 +6,9 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "nodeVersion": "20.x",
-        "installCommand": "npm install --force"
+        "nodeVersion": "18.x",
+        "installCommand": "npm install --legacy-peer-deps --force",
+        "buildCommand": "npm run build"
       }
     }
   ]

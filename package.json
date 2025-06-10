@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --force",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+        "vite": "^4.4.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
@@ -33,7 +34,7 @@
     "vite": "6.3.5"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "18.x"
   },
   "overrides": {
     "rollup": "3.29.4"
