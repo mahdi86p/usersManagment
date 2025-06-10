@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --force",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -33,7 +33,7 @@
     "vite": "6.3.5"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=20.0.0"
   },
   "overrides": {
     "rollup": "3.29.4"
