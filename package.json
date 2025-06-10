@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-        "vite": "^4.4.11",
+    "vite": "^4.4.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
@@ -37,6 +37,9 @@
     "node": "18.x"
   },
   "overrides": {
+    "rollup": "3.29.4"
+  },
+  "resolutions": {
     "rollup": "3.29.4"
   }
 }
