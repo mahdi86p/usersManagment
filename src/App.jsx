@@ -55,7 +55,7 @@ function App() {
     if (!inputValue.trim()) {
       return;
     }
-    
+
     const newUser = {
       id: uuidv4(),
       name: inputValue,
@@ -122,7 +122,7 @@ function App() {
               key={user.id}
               className="flex justify-between items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:bg-gray-700 max-md:flex-col"
             >
-              <div className="max-md:flex max-md:justify-between max-md:flex-col flex-row gap-2">
+              <div className="max-md:flex max-md:justify-between max-md:flex-col flex-row gap-2 w-100">
                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">
                   {user.name}
                 </h3>
