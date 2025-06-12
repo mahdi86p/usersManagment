@@ -27,8 +27,7 @@ function App() {
       setUsers(json);
       localStorage.setItem("users", JSON.stringify(json));
     } catch (error) {
-      const notify = () => toast("We can not read server");
-      notify();
+      toast.error("We can not read server");
     } finally {
       setLoading(false);
     }
@@ -54,6 +53,8 @@ function App() {
 
   function addUsers() {
     if (!inputValue.trim()) {
+      const notify = toast.error('Enter a name and try again')
+      notify()
       return;
     }
 
@@ -70,22 +71,19 @@ function App() {
     setInputValue("");
   }
 
-  function removeBoxFunc(userId, event) {
-    const deletedUserName = Array(event.target.parentElement)[0].children[0]
-      .children[0].innerHTML;
+  function removeBoxFunc(userId, userName) {
     const updatedUsers = users.filter((user) => user.id !== userId);
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-    const notify = () => toast(deletedUserName + " removed");
-    notify();
+    toast(userName + " User removed");
   }
 
   return (
-    <div className="container mx-auto p-4 max-w-4xl">
-      <div className="flex items-center gap-2 mb-6 max-md:flex-col">
+    <div className="w-full mx-auto p-4">
+      <div className="w-full flex items-center gap-2 mb-6 max-md:flex-col">
         <input
           type="text"
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all max-md:w-[100%]"
           placeholder="Enter name"
           value={inputValue}
           onChange={handleInputChange}
@@ -94,7 +92,7 @@ function App() {
         />
         <button
           onClick={addUsers}
-          className="px-4 py-2 text-black border border-gray-100 rounded-lg hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition dark:text-white cursor-pointer"
+          className="text-white px-4 py-2 bg-green-400 border border-gray-100 rounded-lg duration-250 hover:border-gray-300 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition cursor-pointer border-none max-md:w-[100%]"
         >
           Add User
         </button>
@@ -121,7 +119,7 @@ function App() {
           {users.map((user) => (
             <div
               key={user.id}
-              className="flex justify-between items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:bg-gray-700 max-md:flex-col"
+              className="flex justify-between items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:bg-gray-700 max-md:flex-col max-md:gap-7 max-md:text-center"
             >
               <div className="max-md:flex max-md:justify-between max-md:flex-col flex-row gap-2 w-100">
                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">
@@ -130,7 +128,7 @@ function App() {
                 <p className="text-gray-600 dark:text-gray-300">{user.email}</p>
               </div>
               <button
-                onClick={(e) => removeBoxFunc(user.id, e)}
+                onClick={(e) => removeBoxFunc(user.id, user.name)}
                 className="p-3 bg-red-500 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors text-white cursor-pointer max-md:w-[100%]"
               >
                 Remove
